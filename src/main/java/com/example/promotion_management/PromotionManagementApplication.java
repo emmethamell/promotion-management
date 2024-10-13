@@ -15,5 +15,5 @@ public class PromotionManagementApplication {
         System.setProperty("spring.datasource.password", dotenv.get("DB_PASSWORD"));
 		SpringApplication.run(PromotionManagementApplication.class, args);
 	}
-
+	
 }
