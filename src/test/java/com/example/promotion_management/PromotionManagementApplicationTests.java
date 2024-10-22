@@ -22,6 +22,7 @@ public class PromotionManagementApplicationTests {
 
 	@Test
 	void contextLoads() {
+        
 	}
 
 }
