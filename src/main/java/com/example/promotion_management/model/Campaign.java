@@ -3,19 +3,21 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
 
+import com.example.promotion_management.enums.Status;
+
 @Entity //annotation tells JPA that this class should be matched to a database table, an instance of campaign should be matched to a row in the campaign database
 public class Campaign { 
     @Id //marks the campaignID as the primary ID
     @GeneratedValue(strategy = GenerationType.IDENTITY) //automatically generates an ID
     private Long campaignId;
-
+    
     //the basic fields for a campaign instance
     private String campaignName;
     private String campaignDescription;
     private LocalDate startDate;
     private LocalDate endDate;
     private String createdBy;
-    private String status; // "active, paused or completed"
+    private Status status; // "active, paused or completed"
 
     @OneToMany(mappedBy = "campaign") // campaign can have many promoCodes
     private List<PromoCode> promoCodes;
@@ -72,11 +74,11 @@ public class Campaign {
         this.createdBy = createdBy;
     }
 
-    public String getStatus() {
+    public Status getStatus() {
         return status;
     }
 
-    public void setStatus(String status) {
+    public void setStatus(Status status) {
         this.status = status;
     }
 
