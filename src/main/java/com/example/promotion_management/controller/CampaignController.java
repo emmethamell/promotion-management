@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/campaigns")
+@CrossOrigin(origins = "http://localhost:5173") //allow requests from front end
 public class CampaignController {
     @Autowired
     private CampaignService campaignService;
