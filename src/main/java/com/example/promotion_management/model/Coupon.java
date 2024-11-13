@@ -3,6 +3,8 @@ import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 @Entity
 public class Coupon {
     @Id
@@ -10,6 +12,7 @@ public class Coupon {
     private Long uid;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "campaignId", nullable = false)
     private Campaign campaign;
 

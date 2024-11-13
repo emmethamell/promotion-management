@@ -32,6 +32,7 @@ public class PromoCodeController {
 
     @PostMapping
     public ResponseEntity<PromoCode> createPromoCode(@RequestBody PromoCode promoCode) {
+        System.out.println("HELLOOOOOOOOOOOOOOOOOOOOOOOOOOOOO: " + promoCode);
         PromoCode createdPromoCode = promoCodeService.createPromoCode(promoCode);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdPromoCode);
     }

@@ -1,5 +1,6 @@
 package com.example.promotion_management.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ public class PromoCode {
     private Long uid;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "campaignId", nullable = false) //PromoCode entity is joined to Campaign entity via a foriegn key, the one in campaign
     private Campaign campaign;
 
@@ -103,5 +105,20 @@ public class PromoCode {
         this.usageCount = usageCount;
     }
 
-    
+    @Override
+    public String toString() {
+        return "PromoCode{" +
+                "uid=" + uid +
+                ", campaign=" + (campaign != null ? campaign.getCampaignId() : "null") +  // Assuming Campaign has an ID getter
+                ", code='" + code + '\'' +
+                ", discountType='" + discountType + '\'' +
+                ", discountValue=" + discountValue +
+                ", minimumSpend=" + minimumSpend +
+                ", startDate=" + startDate +
+                ", expirationDate=" + expirationDate +
+                ", usageLimit=" + usageLimit +
+                ", usageCount=" + usageCount +
+                '}';
+    }
+
 }

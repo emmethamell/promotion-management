@@ -2,6 +2,7 @@ package com.example.promotion_management.model;
 import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.util.List;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import com.example.promotion_management.enums.Status;
 
@@ -20,9 +21,11 @@ public class Campaign {
     private Status status; // "active, paused or completed"
 
     @OneToMany(mappedBy = "campaign") // campaign can have many promoCodes
+    @JsonManagedReference
     private List<PromoCode> promoCodes;
 
     @OneToMany(mappedBy = "campaign") // campaign can have many coupons
+    @JsonManagedReference
     private List<Coupon> coupons;
 
     //getters and setters
